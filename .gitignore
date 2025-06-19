@@ -1,0 +1,11 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Node modules and logs (if later converted to JS framework)
+node_modules/
+npm-debug.log*
+
+# Build output (if used)
+dist/
+build/
