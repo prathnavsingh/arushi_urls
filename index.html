@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Kits</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+  <link rel="stylesheet" href="https://unpkg.com/lucide@latest/dist/lu.min.css" />
+</head>
+<body class="bg-zinc-900 text-white min-h-screen flex items-center justify-center p-6">
+  <div class="bg-zinc-800 rounded-2xl p-6 w-full max-w-md shadow-lg">
+    <h2 class="text-xl font-semibold mb-4">Brand Kits</h2>
+    <div class="space-y-4">
+      <!-- Brand Card -->
+      <div class="flex items-center justify-between p-4 rounded-xl bg-zinc-900 hover:ring-2 ring-zinc-700 transition">
+        <div class="flex items-center gap-3">
+          <input type="checkbox" class="form-checkbox h-5 w-5 accent-emerald-400" />
+          <div class="flex items-center gap-2">
+            <span class="h-3 w-3 bg-emerald-400 rounded-full"></span>
+            <span class="font-medium">ECorp</span>
+          </div>
+        </div>
+        <button title="Settings">
+          <i class="lu-settings text-zinc-400 hover:text-white"></i>
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between p-4 rounded-xl bg-zinc-900 hover:ring-2 ring-zinc-700 transition">
+        <div class="flex items-center gap-3">
+          <input type="checkbox" class="form-checkbox h-5 w-5 accent-amber-400" />
+          <div class="flex items-center gap-2">
+            <span class="h-3 w-3 bg-amber-400 rounded-full"></span>
+            <span class="font-medium">ICorp</span>
+          </div>
+        </div>
+        <button title="Settings">
+          <i class="lu-settings text-zinc-400 hover:text-white"></i>
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between p-4 rounded-xl bg-zinc-900 hover:ring-2 ring-zinc-700 transition">
+        <div class="flex items-center gap-3">
+          <input type="checkbox" checked class="form-checkbox h-5 w-5 accent-violet-500" />
+          <div class="flex items-center gap-2">
+            <span class="h-3 w-3 bg-red-500 rounded-full"></span>
+            <span class="font-medium">The Agency</span>
+          </div>
+        </div>
+        <button title="Settings">
+          <i class="lu-settings text-zinc-400 hover:text-white"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
