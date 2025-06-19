@@ -48,6 +48,3 @@ brand-kits-component/
 - Tailwind CSS 3.x
 - Lucide Icons
 
-## 🧠 Author Notes
-
-This component was auto-generated using OpenAI's ChatGPT and enhanced manually.
