@@ -3,59 +3,146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brand Kits</title>
+  <title>Frontend Battle</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6b3c3c',
+            secondary: '#f3f3f3'
+          }
+        }
+      }
     };
   </script>
   <link rel="stylesheet" href="https://unpkg.com/lucide@latest/dist/lu.min.css" />
 </head>
-<body class="bg-zinc-900 text-white min-h-screen flex items-center justify-center p-6">
-  <div class="bg-zinc-800 rounded-2xl p-6 w-full max-w-md shadow-lg">
-    <h2 class="text-xl font-semibold mb-4">Brand Kits</h2>
-    <div class="space-y-4">
-      <!-- Brand Card -->
-      <div class="flex items-center justify-between p-4 rounded-xl bg-zinc-900 hover:ring-2 ring-zinc-700 transition">
-        <div class="flex items-center gap-3">
-          <input type="checkbox" class="form-checkbox h-5 w-5 accent-emerald-400" />
-          <div class="flex items-center gap-2">
-            <span class="h-3 w-3 bg-emerald-400 rounded-full"></span>
-            <span class="font-medium">ECorp</span>
-          </div>
-        </div>
-        <button title="Settings">
-          <i class="lu-settings text-zinc-400 hover:text-white"></i>
-        </button>
-      </div>
+<body class="bg-zinc-900 text-white min-h-screen">
 
-      <div class="flex items-center justify-between p-4 rounded-xl bg-zinc-900 hover:ring-2 ring-zinc-700 transition">
-        <div class="flex items-center gap-3">
-          <input type="checkbox" class="form-checkbox h-5 w-5 accent-amber-400" />
-          <div class="flex items-center gap-2">
-            <span class="h-3 w-3 bg-amber-400 rounded-full"></span>
-            <span class="font-medium">ICorp</span>
-          </div>
-        </div>
-        <button title="Settings">
-          <i class="lu-settings text-zinc-400 hover:text-white"></i>
-        </button>
-      </div>
+  <!-- Loader -->
+  <div id="loader" class="fixed inset-0 bg-zinc-900 flex items-center justify-center z-50">
+    <video autoplay muted loop class="w-32 h-32">
+      <source src="loader.mp4" type="video/mp4">
+    </video>
+  </div>
 
-      <div class="flex items-center justify-between p-4 rounded-xl bg-zinc-900 hover:ring-2 ring-zinc-700 transition">
-        <div class="flex items-center gap-3">
-          <input type="checkbox" checked class="form-checkbox h-5 w-5 accent-violet-500" />
-          <div class="flex items-center gap-2">
-            <span class="h-3 w-3 bg-red-500 rounded-full"></span>
-            <span class="font-medium">The Agency</span>
+  <script>
+    window.onload = () => {
+      document.getElementById('loader').style.display = 'none';
+    };
+  </script>
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-4 bg-zinc-800 shadow-lg">
+    <h1 class="text-xl font-bold">Frontend Battle</h1>
+    <ul class="flex gap-6">
+      <li><a href="#brandkits" class="hover:text-indigo-400">Brand Kits</a></li>
+      <li><a href="#chart" class="hover:text-indigo-400">Emissions</a></li>
+      <li><a href="#stats" class="hover:text-indigo-400">Stats</a></li>
+      <li><a href="#testimonials" class="hover:text-indigo-400">Testimonials</a></li>
+    </ul>
+    <button id="themeToggle" class="ml-4 p-2 rounded bg-zinc-700 hover:bg-zinc-600">
+      Toggle Theme
+    </button>
+  </nav>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    toggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+  </script>
+
+  <!-- Brand Kits Section -->
+  <section id="brandkits" class="flex items-center justify-center p-6">
+    <div class="bg-zinc-800 rounded-2xl p-6 w-full max-w-md shadow-lg ring-1 ring-offset-2 ring-offset-indigo-500 ring-indigo-300">
+      <h2 class="text-xl font-semibold mb-4">Brand Kits</h2>
+      <div class="space-y-4">
+        <!-- Brand Cards -->
+        <div class="flex items-center justify-between p-4 rounded-xl bg-zinc-900 hover:ring-2 ring-zinc-700 transition">
+          <div class="flex items-center gap-3">
+            <input type="checkbox" class="form-checkbox h-5 w-5 accent-emerald-400" />
+            <div class="flex items-center gap-2">
+              <div class="flex gap-1">
+                <span class="h-3 w-3 bg-white rounded-full"></span>
+                <span class="h-3 w-3 bg-white rounded-full"></span>
+              </div>
+              <span class="h-3 w-3 bg-emerald-400 rounded-full"></span>
+              <span class="font-medium">ECorp</span>
+            </div>
           </div>
+          <button title="Settings">
+            <i class="lu-settings text-zinc-400 hover:text-white"></i>
+          </button>
         </div>
-        <button title="Settings">
-          <i class="lu-settings text-zinc-400 hover:text-white"></i>
-        </button>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Emissions Chart Section -->
+  <section id="chart" class="bg-zinc-950 text-white p-8">
+    <h2 class="text-2xl font-semibold mb-4 text-center">Embodied Carbon Emissions</h2>
+    <canvas id="carbonChart" class="max-w-4xl mx-auto"></canvas>
+    <div class="text-center mt-4">
+      <a href="#" class="inline-flex items-center gap-2 px-4 py-2 border rounded-full text-sm hover:bg-zinc-700">
+        Download the data <i class="lu-download"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Stats Summary Section -->
+  <section id="stats" class="bg-zinc-900 text-white p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="p-4 bg-zinc-800 rounded-xl">
+      <h3 class="text-lg font-semibold mb-2">Carbon Footprint</h3>
+      <p class="text-4xl font-bold mb-1">45,048</p>
+      <p class="text-sm text-gray-400 mb-2">tCO₂e ↑ 16%</p>
+      <div class="space-y-2">
+        <div class="text-sm">2022 <div class="bg-primary h-2 rounded w-4/5"></div></div>
+        <div class="text-sm">2021 <div class="bg-primary h-2 rounded w-2/5"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="bg-zinc-800 text-white p-8">
+    <h2 class="text-2xl font-semibold text-center mb-6">Testimonials</h2>
+    <video autoplay muted loop class="mx-auto rounded shadow-lg max-w-xl">
+      <source src="testimonials.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  <!-- Chart Logic -->
+  <script>
+    const ctx = document.getElementById('carbonChart').getContext('2d');
+    const carbonChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+        datasets: [{
+          label: 'kgCO₂e/m²',
+          data: [549, 875, 617, 506, 881, 539, 607, 528],
+          backgroundColor: '#6b3c3c'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 1200
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+  </script>
+
 </body>
 </html>
